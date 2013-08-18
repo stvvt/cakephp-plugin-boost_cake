@@ -91,7 +91,7 @@ class BoostCakePaginatorHelper extends PaginatorHelper {
 		}
 		unset($options['disabled']);
 
-		return parent::prev($title, $options, $this->link($title), array_merge($options, array(
+		return parent::prev($title, $options, $this->link($title, array(), $options), array_merge($options, array(
 			'escape' => false,
 			'class' => $disabled,
 		)));
@@ -118,7 +118,7 @@ class BoostCakePaginatorHelper extends PaginatorHelper {
 		}
 		unset($options['disabled']);
 
-		return parent::next($title, $options, $this->link($title), array_merge($options, array(
+		return parent::next($title, $options, $this->link($title, array(), $options), array_merge($options, array(
 			'escape' => false,
 			'class' => $disabled,
 		)));
