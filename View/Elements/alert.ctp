@@ -12,7 +12,7 @@ if (!isset($close)) {
 <?php endif; ?>
 	<h4><?php echo $message; ?></h4>
     
-    <?php if (empty($this->request->data)) : ?>
+    <?php if (false && empty($this->request->data)) : ?>
     	<?php $this->Form->validationErrors = Hash::merge($this->Form->validationErrors, (array)@$errors);?>
     	<?php $errorMessages = array(); ?>
     	<?php foreach ($this->Form->validationErrors as $model => $errs) {
