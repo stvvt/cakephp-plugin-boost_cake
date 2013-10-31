@@ -113,7 +113,7 @@ class BoostCakeFormHelper extends FormHelper {
 			if (isset($options['before'])) {
 				$html = str_replace($options['before'], '%before%', $html);
 			}
-			$regex = '/(<label.*?>)(.*?<\/label>)/';
+			$regex = '/(<label.*?>)(.*?<\/label>)/s';
 			if (preg_match($regex, $html, $label)) {
 				$html = preg_replace($regex, '', $html);
 				$html = preg_replace(
