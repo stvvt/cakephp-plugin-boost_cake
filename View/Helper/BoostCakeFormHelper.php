@@ -207,7 +207,7 @@ class BoostCakeFormHelper extends FormHelper {
  */
 	protected function _selectOptions($elements = array(), $parents = array(), $showParents = null, $attributes = array()) {
 		$selectOptions = parent::_selectOptions($elements, $parents, $showParents, $attributes);
-
+		
 		if ($attributes['style'] === 'checkbox') {
 			foreach ($selectOptions as $key => $option) {
 				$option = preg_replace('/<div.*?>/', '', $option);
@@ -215,13 +215,14 @@ class BoostCakeFormHelper extends FormHelper {
 				if (preg_match('/>(<label.*?>)/', $option, $match)) {
 					$option = $match[1] . preg_replace('/<label.*?>/', ' ', $option);
 					if (isset($attributes['class'])) {
+						$attributes['class'] = implode(' ', (array)$attributes['class']);
 						$option = preg_replace('/(<label.*?)(>)/', '$1 class="' . $attributes['class'] . '"$2', $option);
 					}
 				}
 				$selectOptions[$key] = $option;
 			}
 		}
-
+		
 		return $selectOptions;
 	}
 
