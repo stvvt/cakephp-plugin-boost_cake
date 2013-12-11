@@ -216,7 +216,13 @@ class BoostCakeFormHelper extends FormHelper {
 					$option = $match[1] . preg_replace('/<label.*?>/', ' ', $option);
 					if (isset($attributes['class'])) {
 						$attributes['class'] = implode(' ', (array)$attributes['class']);
-						$option = preg_replace('/(<label.*?)(>)/', '$1 class="' . $attributes['class'] . '"$2', $option);
+						if (preg_match('/<label.*?class="(.*?)".*?>/', $option, $m)) {
+						    $option = preg_replace('/(<label.*?)class=".*?"(.*?>)/', '$1$2', $option);
+							$exClass = ' ' . $m[1];
+						} else {
+							$exClass = '';
+						}
+						$option = preg_replace('/(<label.*?)(>)/', '$1 class="' . $attributes['class'] . $exClass. '"$2', $option);
 					}
 				}
 				$selectOptions[$key] = $option;
